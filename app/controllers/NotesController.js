@@ -7,6 +7,7 @@ export class NotesController {
     this.drawNotesList()
     this.drawJotsCount()
     AppState.on('notes', this.drawNotesList)
+    AppState.on('notes', this.drawJotsCount)
   }
 
   drawNotesList() {
@@ -39,5 +40,11 @@ export class NotesController {
     console.log("form data is", rawNoteData)
 
     notesService.createNote(rawNoteData)
+  }
+
+  drawActiveNote() {
+    const note = AppState.activeNote
+    console.log(note);
+
   }
 }

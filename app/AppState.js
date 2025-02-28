@@ -21,6 +21,8 @@ class ObservableAppState extends EventEmitter {
       body: `You need to clean the toilets, wash the dishes, do the yard work, take dogs to day care`,
     })
   ]
+
+  activeNote = null
 }
 
 export const AppState = createObservableProxy(new ObservableAppState())

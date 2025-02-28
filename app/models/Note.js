@@ -10,6 +10,10 @@ export class Note {
     this.updatedAt = data.updatedAt
   }
 
+  get createdDateTime() {
+    return this.createdAt.toLocaleDateString("en-US")
+  }
+
   get listHTMLTemplate() {
 
     return `
@@ -17,7 +21,9 @@ export class Note {
                 <h4>
                   <span class="fs-2 note-color-${this.color} mdi mdi-circle"></span> ${this.title}
                 </h4>
-                <p>date</p>
+                <div class="d-flex align-items-center">
+                  <p>${this.createdDateTime}</p>
+                </div>
               </div>
     `
   }
