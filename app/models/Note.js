@@ -6,7 +6,7 @@ export class Note {
     this.title = data.title
     this.color = data.color
     this.body = data.body
-    this.createdAt = data.createdAt
+    this.createdAt = new Date()
     this.updatedAt = data.updatedAt
   }
 

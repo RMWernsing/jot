@@ -10,8 +10,29 @@ main {
   display: flex;
 }
 
+.note-color-green {
+  color: rgb(2, 184, 2);
+}
+
+.note-color-blue {
+  color: blue;
+}
+
+.note-color-yellow {
+  color: rgb(234, 255, 0);
+}
+
+.note-color-red {
+  color: rgb(255, 0, 0);
+}
+
+.note-color-purple {
+  color: rgb(112, 0, 250);
+}
+
+
 .form-input {
-  min-width: 60%;
+  min-width: 70%;
 }
 
 #pop-toast-container {
