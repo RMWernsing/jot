@@ -10,6 +10,16 @@ main {
   display: flex;
 }
 
+textarea {
+  width: 100%;
+  min-height: 40dvh;
+  max-height: 60dvh;
+}
+
+img {
+  max-height: 80dvh;
+}
+
 .note-color-green {
   color: rgb(2, 184, 2);
 }

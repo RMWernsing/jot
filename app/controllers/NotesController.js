@@ -45,6 +45,11 @@ export class NotesController {
   drawActiveNote() {
     const note = AppState.activeNote
     console.log(note);
+    const activeNoteElem = document.getElementById('activeNote')
+
+    if (note == null) {
+      activeNoteElem.innerHTML = 
+    }
 
   }
 }
