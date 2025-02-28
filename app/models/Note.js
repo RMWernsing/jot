@@ -10,6 +10,16 @@ export class Note {
     this.updatedAt = data.updatedAt
   }
 
+  get listHTMLTemplate() {
 
+    return `
+       <div class="d-flex justify-content-between">
+                <h4>
+                  <span class="fs-2 note-color-${this.color} mdi mdi-circle"></span> ${this.title}
+                </h4>
+                <p>date</p>
+              </div>
+    `
+  }
 
 }

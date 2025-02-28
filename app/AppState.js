@@ -6,12 +6,12 @@ class ObservableAppState extends EventEmitter {
 
   notes = [
     new Note({
-      title: 'Spider in my bed',
+      title: 'Spider in bed',
       color: 'red',
       body: `The spider is really big and scary and I don't want anything to do with it.`,
     }),
     new Note({
-      title: `The bit universe`,
+      title: `The lg universe`,
       color: 'yellow',
       body: `The thing about the universe that really does freak me out is that it's so incomprehensibly big and I don't understand it.`,
     }),
