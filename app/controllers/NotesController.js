@@ -88,7 +88,7 @@ export class NotesController {
       return
     }
 
-
+    notesService.deleteActiveNote()
   }
 
 

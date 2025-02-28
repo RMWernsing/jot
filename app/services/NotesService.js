@@ -3,6 +3,13 @@ import { Note } from "../models/Note.js"
 
 class NotesService {
 
+  deleteActiveNote() {
+    const note = AppState.notes
+    const noteIndex = note.findIndex(note => note.id == AppState.activeNote.id)
+    note.splice(noteIndex, 1)
+    AppState.activeNote = null
+  }
+
 
   updateNoteBody(bodyFromTextArea) {
     const note = AppState.activeNote
