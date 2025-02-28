@@ -75,7 +75,21 @@ export class NotesController {
 
     const formElem = event.target
 
-    const contentFromTextArea = formElem..value
+    // @ts-ignore
+    const bodyFromTextArea = formElem.body.value
+    notesService.updateNoteBody(bodyFromTextArea)
 
   }
+
+  deleteNote() {
+    const confirmed = window.confirm(`Are you sure you want to delete ${AppState.activeNote.title}?`)
+
+    if (!confirmed) {
+      return
+    }
+
+
+  }
+
+
 }

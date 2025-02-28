@@ -4,6 +4,15 @@ import { Note } from "../models/Note.js"
 class NotesService {
 
 
+  updateNoteBody(bodyFromTextArea) {
+    const note = AppState.activeNote
+    note.body = bodyFromTextArea
+    note.updatedAt = new Date()
+    AppState.emit('activeNote')
+
+  }
+
+
   setActiveNote(noteId) {
     const notes = AppState.notes
     const foundNote = notes.find(note => note.id == noteId)
@@ -23,6 +32,8 @@ class NotesService {
     notes.push(newNote)
 
   }
+
+
 }
 
 export const notesService = new NotesService()

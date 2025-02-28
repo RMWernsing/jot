@@ -7,12 +7,21 @@ export class Note {
     this.color = data.color
     this.body = data.body
     this.createdAt = new Date()
-    this.updatedAt = data.updatedAt
+    this.updatedAt = new Date()
   }
 
   get createdDateTime() {
     return this.createdAt.toLocaleDateString("en-US")
   }
+
+  get updatedDateTime() {
+    return this.updatedAt.toLocaleTimeString('en-US', {
+      hour12: true,
+      timeStyle: 'medium'
+    })
+  }
+
+
 
   get listHTMLTemplate() {
 
@@ -35,13 +44,13 @@ export class Note {
               <span class="note-color-${this.color} mdi mdi-circle"></span> ${this.title}
             </h2>
             <p>Created on: ${this.createdDateTime}</p>
-            <p>Last updated: date and time</p>
+            <p>Last updated: ${this.updatedDateTime}</p>
             <form onsubmit="app.notesController.saveNote()">
               <textarea name="body" id="body" placeholder="Please Write Something">${this.body}</textarea>
               <div class="text-end mt-2">
                 <button type="submit" class="btn btn-light fs-5 me-2">Save
                   <span class="mdi mdi-content-save"></span></button>
-                <button type="button" class="btn btn-danger fs-5">Delete
+                <button onclick="app.notesController.deleteNote()" type="button" class="btn btn-danger fs-5">Delete
                   <span class="mdi mdi-delete"></span></button>
               </div>
             </form>
