@@ -6,8 +6,10 @@ export class NotesController {
   constructor() {
     this.drawNotesList()
     this.drawJotsCount()
+    this.drawActiveNote()
     AppState.on('notes', this.drawNotesList)
     AppState.on('notes', this.drawJotsCount)
+    AppState.on('activeNote', this.drawActiveNote)
   }
 
   drawNotesList() {
@@ -31,6 +33,26 @@ export class NotesController {
 
   }
 
+  drawActiveNote() {
+    const note = AppState.activeNote
+
+    console.log(note);
+    const activeNoteElem = document.getElementById('activeNote')
+
+    if (note == null) {
+      activeNoteElem.innerHTML = ` <div class="text-center">
+      <img src="assets/img/undraw_add-notes_9xls.png" alt="">
+      </div>`
+      return
+    }
+    if (note.body == undefined) {
+      note.body = ''
+    }
+
+    activeNoteElem.innerHTML = note.activeNoteHTMLTemplate
+
+  }
+
   createNoteListing() {
     event.preventDefault()
     const noteFormElem = event.target
@@ -42,14 +64,8 @@ export class NotesController {
     notesService.createNote(rawNoteData)
   }
 
-  drawActiveNote() {
-    const note = AppState.activeNote
-    console.log(note);
-    const activeNoteElem = document.getElementById('activeNote')
-
-    if (note == null) {
-      activeNoteElem.innerHTML = 
-    }
-
+  selectActiveNote(noteId) {
+    console.log('selecting note with the id of', noteId);
+    notesService.setActiveNote(noteId)
   }
 }
