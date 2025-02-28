@@ -36,15 +36,15 @@ export class Note {
             </h2>
             <p>Created on: ${this.createdDateTime}</p>
             <p>Last updated: date and time</p>
-            <form>
+            <form onsubmit="app.notesController.saveNote()">
               <textarea name="body" id="body" placeholder="Please Write Something">${this.body}</textarea>
+              <div class="text-end mt-2">
+                <button type="submit" class="btn btn-light fs-5 me-2">Save
+                  <span class="mdi mdi-content-save"></span></button>
+                <button type="button" class="btn btn-danger fs-5">Delete
+                  <span class="mdi mdi-delete"></span></button>
+              </div>
             </form>
-            <div class="text-end mt-2">
-              <button type="submit" class="btn btn-light fs-5 me-2">Save
-                <span class="mdi mdi-content-save"></span></button>
-              <button type="submit" class="btn btn-danger fs-5">Delete
-                <span class="mdi mdi-delete"></span></button>
-            </div>
           </div>
     `
   }

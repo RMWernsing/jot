@@ -68,4 +68,14 @@ export class NotesController {
     console.log('selecting note with the id of', noteId);
     notesService.setActiveNote(noteId)
   }
+
+  saveNote() {
+    event.preventDefault()
+    console.log('saving report');
+
+    const formElem = event.target
+
+    const contentFromTextArea = formElem..value
+
+  }
 }
