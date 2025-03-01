@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js";
 import { Note } from "../models/Note.js"
+import { loadState, saveState } from "../utils/Store.js";
 
 class NotesService {
 
@@ -8,6 +9,8 @@ class NotesService {
     const noteIndex = note.findIndex(note => note.id == AppState.activeNote.id)
     note.splice(noteIndex, 1)
     AppState.activeNote = null
+
+    this.saveStateNotes()
   }
 
 
@@ -16,6 +19,8 @@ class NotesService {
     note.body = bodyFromTextArea
     note.updatedAt = new Date()
     AppState.emit('activeNote')
+
+    this.saveStateNotes()
 
   }
 
@@ -38,9 +43,17 @@ class NotesService {
     const notes = AppState.notes
     notes.push(newNote)
 
+    this.saveStateNotes()
   }
 
+  saveStateNotes() {
+    saveState('Notes', AppState.notes)
+  }
 
+  loadStateNotes() {
+    const notes = loadState('Notes', [Note])
+    AppState.notes = notes
+  }
 }
 
 export const notesService = new NotesService()

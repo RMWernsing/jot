@@ -6,14 +6,20 @@ export class Note {
     this.title = data.title
     this.color = data.color
     this.body = data.body
-    this.createdAt = new Date()
-    this.updatedAt = new Date()
+    this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date()
+    this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date()
   }
 
-  get createdDateTime() {
+  get createdDate() {
     return this.createdAt.toLocaleDateString("en-US")
   }
 
+  get createdTime() {
+    return this.createdAt.toLocaleTimeString('en-US', {
+      hour12: true,
+      timeStyle: 'medium'
+    })
+  }
   get updatedDateTime() {
     return this.updatedAt.toLocaleTimeString('en-US', {
       hour12: true,
@@ -31,7 +37,7 @@ export class Note {
                   <span class="fs-2 note-color-${this.color} mdi mdi-circle"></span> ${this.title}
                 </h4>
                 <div class="d-flex align-items-center">
-                  <p>${this.createdDateTime}</p>
+                  <p>${this.createdDate}</p>
                 </div>
               </div>
     `
@@ -43,7 +49,7 @@ export class Note {
             <h2>
               <span class="note-color-${this.color} mdi mdi-circle"></span> ${this.title}
             </h2>
-            <p>Created on: ${this.createdDateTime}</p>
+            <p>Created on: ${this.createdDate} ${this.createdTime}</p>
             <p>Last updated: ${this.updatedDateTime}</p>
             <form onsubmit="app.notesController.saveNote()">
               <textarea name="body" id="body" placeholder="Please Write Something">${this.body}</textarea>

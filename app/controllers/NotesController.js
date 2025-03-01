@@ -10,6 +10,8 @@ export class NotesController {
     AppState.on('notes', this.drawNotesList)
     AppState.on('notes', this.drawJotsCount)
     AppState.on('activeNote', this.drawActiveNote)
+
+    notesService.loadStateNotes()
   }
 
   drawNotesList() {
