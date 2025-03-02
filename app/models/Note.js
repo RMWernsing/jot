@@ -14,6 +14,10 @@ export class Note {
     return this.createdAt.toLocaleDateString("en-US")
   }
 
+  get updatedDate() {
+    return this.updatedAt.toLocaleDateString("en-US")
+  }
+
   get createdTime() {
     return this.createdAt.toLocaleTimeString('en-US', {
       hour12: true,
@@ -50,7 +54,7 @@ export class Note {
               <span class="note-color-${this.color} mdi mdi-circle"></span> ${this.title}
             </h2>
             <p>Created on: ${this.createdDate} ${this.createdTime}</p>
-            <p>Last updated: ${this.updatedDateTime}</p>
+            <p>Last updated: ${this.updatedDate} ${this.updatedDateTime}</p>
             <form onsubmit="app.notesController.saveNote()">
               <textarea name="body" id="body" placeholder="Please Write Something">${this.body}</textarea>
               <div class="text-end mt-2">
